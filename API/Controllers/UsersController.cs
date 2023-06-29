@@ -1,14 +1,14 @@
 using System.Diagnostics;
 using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")] // GET /api/users
-    public class UsersController : ControllerBase
+   [Authorize]
+    public class UsersController : BaseApiController //save of repeating yourself
     {
         private readonly DataContext _context;
 
@@ -17,6 +17,7 @@ namespace API.Controllers
             _context = context;
         }
 
+        [AllowAnonymous] //You cannot used at hightest level
         [HttpGet] //Api endpoint so we can request a list of users from our DB
 
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers() //task is an asyncronous action that can return a value
