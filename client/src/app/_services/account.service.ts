@@ -10,7 +10,7 @@ import {BehaviorSubject} from 'rxjs';
 export class AccountService { //using aservice gines us the oportunity to centralize our Http request
   baseUrl = 'http://localhost:5193/api/';
   private currentUserSource = new BehaviorSubject <User | null>(null);
-  currentUser$ = this.currentUserSource.asObservable();
+  currentUser$ = this.currentUserSource.asObservable(); //check if it's a user or no
  
 
   constructor(private http: HttpClient) { }
