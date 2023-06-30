@@ -6,12 +6,16 @@ using API.Data;
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace API.Controllers
 {
+   // [AllowAnonymous]
+       // [Route("api/[controller]")]
+      //  [ApiController]
     
     public class AccountController : BaseApiController
     {

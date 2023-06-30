@@ -1,5 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from './_services/account.service';
+import { User } from './_models/user';
 
 
 
@@ -13,16 +15,21 @@ export class AppComponent implements OnInit {
   title = 'Dating APP';
   users: any;
 
-  constructor (private http: HttpClient) {} //private-> what we are using here will be available just in this class
+  constructor ( private accountService: AccountService) {} //private-> what we are using here will be available just in this class
   //http injected in our constructor-< is part of the class->this.http
 
   ngOnInit(): void {
-   this.http.get('http://localhost:5193/api/users').subscribe({
-    next: response => this.users = response,
-    error: error => console.log(error),
-    complete: () => console.log('Request has completed')
-   })
+    
+    this.setCurrentUser();
+   
   }
 
+//method to set the current user:
+setCurrentUser(){
+  const userString = localStorage.getItem('user'); //!=tyoescrit safety
+  if (!userString) return; //check if youhave the user
+  const user: User =JSON.parse(userString);
+  this.accountService.setCurrentUser(user);
+}
  
 }
