@@ -20,6 +20,8 @@ namespace API.Extensions
             });
             services.AddCors();
             services.AddScoped<ITokenService, TokenService>(); 
+            services.AddScoped<IUserRepository, UserRepository>();//make sinjectable into user controller
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); //assembly for the current domain
 
             return services;
             }      
