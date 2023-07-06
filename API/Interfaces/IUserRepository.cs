@@ -2,6 +2,7 @@
 
 using API.DTOs;
 using API.Entities;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Interfaces
@@ -20,7 +21,7 @@ namespace API.Interfaces
 
         Task<IEnumerable<MemberDto>> GetMembersAsync();
 
-        Task<MemberDto>GetmemberAsync(string username);
-        
+        Task<MemberDto>GetMemberAsync(string username);
+       //Task<ActionResult<MemberDto>> GetMemberAsync(string username);
     }
 }

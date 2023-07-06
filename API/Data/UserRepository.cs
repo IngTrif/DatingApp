@@ -5,6 +5,7 @@ using API.Entities;
 using API.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor.Compilation;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +22,7 @@ namespace API.Data
             _mapper = mapper;
         }
 
-        public async Task<MemberDto> GetmemberAsync(string username)
+        public async Task<MemberDto> GetMemberAsync(string username)
         {
             return await _context.Users
                     .Where(x => x.UserName == username)
@@ -36,6 +37,7 @@ namespace API.Data
                     
         }
 
+        
 
         public async Task<IEnumerable<MemberDto>> GetMembersAsync()
         {
@@ -74,3 +76,4 @@ namespace API.Data
         }
     }
 }
+

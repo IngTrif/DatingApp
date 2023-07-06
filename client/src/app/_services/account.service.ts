@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { User } from '../_models/user';
 import {BehaviorSubject} from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ //injected into our componnet
   providedIn: 'root'
 })
 export class AccountService { //using aservice gines us the oportunity to centralize our Http request
-  baseUrl = 'http://localhost:5193/api/';
+  baseUrl = environment.apiUrl;
   private currentUserSource = new BehaviorSubject <User | null>(null);
   currentUser$ = this.currentUserSource.asObservable(); //check if it's a user or no
  
